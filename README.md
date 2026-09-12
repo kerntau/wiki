@@ -37,7 +37,7 @@
    - **Framework Preset**：选择 `Other`
    - **Build Command**：
      ```bash
-     pip install -r requirements.txt && mkdocs build
+     mkdocs build
      ```
    - **Output Directory**：
      ```text
