@@ -25,9 +25,9 @@ site_author: Chent Guitao
 site_description: Chent 的个人知识库，记录和整理技术文档、学习笔记、项目资料、实用教程以及个人实践经验，持续沉淀值得长期保存的知识与内容。
 
 # Repository
-repo_name: kerntau/wiki
-repo_url: https://github.com/kerntau/wiki
-edit_uri: edit/main/docs/
+# repo_name: kerntau/wiki
+# repo_url: https://github.com/kerntau/wiki
+# edit_uri: edit/main/docs/
 
 # Copyright
 copyright: >-
