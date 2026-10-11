@@ -81,21 +81,6 @@ python -m mkdocs build --strict
 
 构建产物位于 site/。部署到 Vercel 时使用 mkdocs build，输出目录 site/；提交前检查导航、站内链接、代码块和自定义 overrides 是否通过严格构建。
 
-## 07. ENGINEERING CONTRACT // 工程协作契约
-
-- 内容修改只写入 docs/，模板和样式修改放入 overrides/。
-- 不要手工编辑 site/ 生成物。
-- 自定义域名应替换为部署者自己的域名，不要在文档中保留失效域名。
-- 文档示例不得提交真实密钥、内网地址或个人数据。
-
-## 08. ROADMAP // 系统演进路线
-
-- [x] Material 主题与自定义 overrides。
-- [x] 前端、后端、云原生、数据库、AI 和安全专栏。
-- [x] Vercel 静态构建配置。
-- [ ] 增加自动链接检查和文档质量门禁。
-- [ ] 为每个专栏补充版本与更新日期索引。
-
-## 09. LICENSE // 许可证
+## 07. LICENSE // 许可证
 
 仓库包含 LICENSE 文件。MkDocs Material 与其他依赖遵循各自许可证，修改或分发时请同时遵守。
