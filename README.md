@@ -46,14 +46,14 @@
 3. **点击 Deploy**：
    - 等待 Vercel 执行依赖安装与编译，通常耗时约 20~30 秒即可全站部署上线。
 
-4. **绑定自定义独立域名（wiki.chent.co）**：
+4. **绑定自定义独立域名（可选）**：
    - 部署完成后，进入项目 **Settings** -> **Domains**；
-   - 输入 `wiki.chent.co` 并点击 **Add**；
+   - 输入你自己的域名并点击 **Add**；
    - 在您的 DNS 解析服务商处（如 Cloudflare / 阿里云 / 腾讯云）添加 CNAME 记录：
      - **主机记录**：`wiki`
      - **记录类型**：`CNAME`
      - **记录值**：`cname.vercel-dns.com`
-   - 等待 SSL 证书签发完成，即可通过 `https://wiki.chent.co` 极速访问。
+   - 按域名服务商提示添加 DNS 记录，等待 SSL 证书签发完成后访问。
 
 ---
 
