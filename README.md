@@ -1,113 +1,101 @@
-# Chent Wiki
+<div align="center">
 
-> **Chent 的个人知识库，记录和整理技术文档、学习笔记、项目资料、实用教程以及个人实践经验，持续沉淀值得长期保存的知识与内容。**
+# CHENT WIKI
 
-- **核心架构**：基于 MkDocs + Material for MkDocs 深度定制
+**基于 MkDocs Material 的个人技术知识库。**<br>
+*A MkDocs Material knowledge base for engineering notes and practice.*
 
----
+[![GitHub](https://img.shields.io/badge/GitHub-kerntau%2Fwiki-181717?style=for-the-badge&logo=github)](https://github.com/kerntau/wiki)
+[![MkDocs](https://img.shields.io/badge/MkDocs-1.6-526CFE?style=for-the-badge)](https://www.mkdocs.org)
+[![Material](https://img.shields.io/badge/Material_for_MkDocs-9.7-526CFE?style=for-the-badge)](https://squidfunk.github.io/mkdocs-material/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=ffffff)](https://www.python.org)
 
-## 📚 知识库内容
-
-知识库收录了 50 篇深度技术实战长文与架构设计解析，划分为 6 大核心技术专栏：
-
-| 专栏名称 | 收录篇数 | 核心内容方向 |
-| :--- | :--- | :--- |
-| **前端开发** | 16 篇 | React 19、SolidJS 响应式、Tailwind v4、WebAssembly、WebRTC 音视频、V8 引擎 GC 等 |
-| **后端开发** | 15 篇 | Rust 所有权并发、Actix/Axum 实测、Go GMP 调度器、Kafka 零拷贝、Raft 算法、gRPC 等 |
-| **云原生与运维** | 9 篇 | Kubernetes 容器编排、Istio 服务网格、Linux eBPF 安全、GitOps、Serverless 冷启动物理机理等 |
-| **数据库系统** | 4 篇 | ClickHouse 千万级实时分析、ShardingSphere 分库分表、PostgreSQL 死锁调优、MongoDB 集群 |
-| **人工智能** | 3 篇 | LLM Agent 架构设计与 LangChain 实战、Elasticsearch 向量检索 RAG、PyTorch 2 动态图编译 |
-| **网络安全** | 3 篇 | Web 安全纵深防御（SQLi / XSS）、OAuth 2.1 与 PKCE 实战、跨云零信任网络架构 |
+</div>
 
 ---
 
-## 🚀 Vercel 自动化部署指南
+## 01. PROJECT PURPOSE // 项目定位
 
-本项目已配置纯净的静态构建流水线（`vercel.json` + `requirements.txt`），推送至 GitHub 后可实现零配置一键自动化部署。
+Chent Wiki 用 Markdown 记录前端、后端、云原生、数据库、人工智能和网络安全主题。站点由 MkDocs Material 生成静态文件，overrides/ 提供视觉和模板定制。
 
-### 部署步骤
+## 02. TECHNICAL ARCHITECTURE // 技术架构
 
-1. **导入仓库**：
-   - 登录 [Vercel 控制台](https://vercel.com/)，点击 **Add New...** -> **Project**；
-   - 选择本知识库的 GitHub 仓库并点击 **Import**。
+~~~mermaid
+graph LR
+    A[docs Markdown] --> B[MkDocs Material]
+    C[overrides templates and assets] --> B
+    D[mkdocs.yml] --> B
+    B --> E[site static output]
+    E --> F[Vercel or static hosting]
+~~~
 
-2. **构建与输出配置（Build & Output Settings）**：
-   - **Framework Preset**：选择 `Other`
-   - **Build Command**：
-     ```bash
-     mkdocs build
-     ```
-   - **Output Directory**：
-     ```text
-     site
-     ```
-   *(注：根目录已内置 `vercel.json`，Vercel 将自动读取上述构建与输出目录参数)*
+- docs/ 是知识库原稿和资源的唯一内容层。
+- mkdocs.yml 定义导航、主题、插件和站点元数据。
+- requirements.txt 固定 Python 构建依赖；vercel.json 指向 site/。
 
-3. **点击 Deploy**：
-   - 等待 Vercel 执行依赖安装与编译，通常耗时约 20~30 秒即可全站部署上线。
+## 03. TECHNICAL MATRIX // 技术矩阵
 
-4. **绑定自定义独立域名（可选）**：
-   - 部署完成后，进入项目 **Settings** -> **Domains**；
-   - 输入你自己的域名并点击 **Add**；
-   - 在您的 DNS 解析服务商处（如 Cloudflare / 阿里云 / 腾讯云）添加 CNAME 记录：
-     - **主机记录**：`wiki`
-     - **记录类型**：`CNAME`
-     - **记录值**：`cname.vercel-dns.com`
-   - 按域名服务商提示添加 DNS 记录，等待 SSL 证书签发完成后访问。
+| 模块 | 实现 | 说明 |
+| --- | --- | --- |
+| 文档引擎 | MkDocs | 将 Markdown 编译为静态 HTML |
+| 主题 | Material for MkDocs | 导航、搜索、代码和响应式 UI |
+| 定制 | overrides/ | 自定义模板、CSS 和脚本 |
+| 依赖 | requirements.txt | MkDocs、主题和压缩插件 |
+| 发布 | Vercel / 静态托管 | 构建目录为 site/ |
 
----
+## 04. REPOSITORY TOPOLOGY // 源码工程拓扑
 
-## 🛠️ 本地开发与编译
+~~~text
+.
+├── docs/                    # Markdown 原稿与资源
+│   ├── assets/              # 图片、字体和其他媒体
+│   ├── posts/               # 技术专栏内容
+│   └── index.md             # 知识库首页
+├── overrides/               # Material 模板和前端资源
+├── mkdocs.yml               # 站点配置与导航
+├── requirements.txt         # Python 依赖
+├── vercel.json              # 构建与输出配置
+├── start_wiki.bat           # Windows 开发启动
+└── build_wiki.bat           # Windows 构建脚本
+~~~
 
-需要 Python 3.10+。首次使用时创建虚拟环境并安装 MkDocs 依赖：
+## 05. CLONE & QUICK START // 极速装配指南
 
-```bash
+环境要求：Python 3.10+。
+
+~~~bash
+git clone https://github.com/kerntau/wiki.git
+cd wiki
 python -m venv .venv
-# Windows PowerShell
-.\.venv\Scripts\Activate.ps1
-# macOS / Linux
-# source .venv/bin/activate
+# Windows PowerShell: .\.venv\Scripts\Activate.ps1
+# macOS/Linux: source .venv/bin/activate
 python -m pip install -r requirements.txt
-```
-
-启动本地热重载服务：
-
-```bash
 mkdocs serve -a 127.0.0.1:8000
-```
+~~~
 
-生成生产静态文件：
+## 06. DEPLOYMENT & VERIFICATION // 部署与验证
 
-```bash
+~~~bash
 python -m mkdocs build --strict
-```
+~~~
 
-构建输出位于 `site/`；`site/` 是生成物，不应手工编辑。Windows 用户也可以使用 `start_wiki.bat` 或 `build_wiki.bat`。
+构建产物位于 site/。部署到 Vercel 时使用 mkdocs build，输出目录 site/；提交前检查导航、站内链接、代码块和自定义 overrides 是否通过严格构建。
 
----
+## 07. ENGINEERING CONTRACT // 工程协作契约
 
-## 📂 项目架构
+- 内容修改只写入 docs/，模板和样式修改放入 overrides/。
+- 不要手工编辑 site/ 生成物。
+- 自定义域名应替换为部署者自己的域名，不要在文档中保留失效域名。
+- 文档示例不得提交真实密钥、内网地址或个人数据。
 
-```text
-WIKI/
-├── docs/                      # 知识库 Markdown 原稿与媒体资产
-│   ├── assets/                # 全套高清 Favicon、封面图片与资源
-│   ├── posts/                 # 6 大技术专栏（50 篇深度长文）
-│   └── index.md               # 知识库首页
-├── overrides/                 # 现代化 UI 覆盖模板与样式
-│   ├── assets/                # 编译优化后的自定义 CSS / JS
-│   ├── partials/              # 居中纤薄版权底栏模板
-│   └── main.html              # 页面入口增强（单行公告横幅、缓存穿透图标）
-├── mkdocs.yml                 # MkDocs 全局站点配置
-├── requirements.txt           # Vercel 与生产环境 Python 依赖清单
-├── vercel.json                # Vercel 静态自动构建部署描述文件
-├── start_wiki.bat             # Windows 本地一键开发启动脚本
-├── build_wiki.bat             # Windows 本地一键静态构建脚本
-└── README.md                  # 项目官方文档
-```
+## 08. ROADMAP // 系统演进路线
 
----
+- [x] Material 主题与自定义 overrides。
+- [x] 前端、后端、云原生、数据库、AI 和安全专栏。
+- [x] Vercel 静态构建配置。
+- [ ] 增加自动链接检查和文档质量门禁。
+- [ ] 为每个专栏补充版本与更新日期索引。
 
-## 📄 版权与声明
+## 09. LICENSE // 许可证
 
-Copyright &copy; 2026 Chent Guitao · Kerntau
+仓库包含 LICENSE 文件。MkDocs Material 与其他依赖遵循各自许可证，修改或分发时请同时遵守。
