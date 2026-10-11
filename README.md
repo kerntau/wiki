@@ -84,22 +84,6 @@ python -m mkdocs build --strict
 
 构建输出位于 `site/`；`site/` 是生成物，不应手工编辑。Windows 用户也可以使用 `start_wiki.bat` 或 `build_wiki.bat`。
 
-## 💻 本地开发与编译
-
-### 快速启动（Windows）
-双击根目录脚本即可启动实时热重载服务并自动在浏览器打开：
-```bash
-.\start_wiki.bat
-```
-访问地址：`http://127.0.0.1:8000/wiki/`
-
-### 生产构建（Windows / Linux / macOS）
-```bash
-# 激活虚拟环境后执行全站静态生成
-python -m mkdocs build
-```
-编译产物将全量输出至根目录 `site/`。
-
 ---
 
 ## 📂 项目架构
