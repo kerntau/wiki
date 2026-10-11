@@ -2,8 +2,6 @@
 
 > **Chent 的个人知识库，记录和整理技术文档、学习笔记、项目资料、实用教程以及个人实践经验，持续沉淀值得长期保存的知识与内容。**
 
-- **线上访问**：[https://wiki.chent.co](https://wiki.chent.co)
-- **个人网站**：[https://chent.co](https://chent.co)
 - **核心架构**：基于 MkDocs + Material for MkDocs 深度定制
 
 ---
@@ -59,6 +57,33 @@
 
 ---
 
+## 🛠️ 本地开发与编译
+
+需要 Python 3.10+。首次使用时创建虚拟环境并安装 MkDocs 依赖：
+
+```bash
+python -m venv .venv
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# macOS / Linux
+# source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+启动本地热重载服务：
+
+```bash
+mkdocs serve -a 127.0.0.1:8000
+```
+
+生成生产静态文件：
+
+```bash
+python -m mkdocs build --strict
+```
+
+构建输出位于 `site/`；`site/` 是生成物，不应手工编辑。Windows 用户也可以使用 `start_wiki.bat` 或 `build_wiki.bat`。
+
 ## 💻 本地开发与编译
 
 ### 快速启动（Windows）
@@ -101,4 +126,4 @@ WIKI/
 
 ## 📄 版权与声明
 
-Copyright &copy; 2026 Chent Guitao · Kerntau | 个人网站: [chent.co](https://chent.co)
+Copyright &copy; 2026 Chent Guitao · Kerntau
